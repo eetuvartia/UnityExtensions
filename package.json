@@ -1,0 +1,12 @@
+{
+    "name": "com.eetuvartia.unityextensions",
+    "displayName": "Unity Extensions",
+    "version": "0.1.0",
+    "unity": "2018.2",
+    "description": "Useful extensions for Unity development",
+    "keywords": ["Unity", "Extensions", "Plugin"],
+    "category": "Extensions",
+    "dependencies": {
+
+    }
+}
