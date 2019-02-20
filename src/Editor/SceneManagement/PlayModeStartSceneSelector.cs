@@ -5,7 +5,7 @@ namespace com.eetuvartia.UnityExtensions.Editor.SceneManagement
 {
 
 	[InitializeOnLoad]
-	public class PlayModeStartSceneSelector 
+	internal class PlayModeStartSceneSelector 
 	{
 
 		private static string StartScenePath 
