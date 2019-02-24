@@ -5,12 +5,12 @@ namespace com.eetuvartia.UnityExtensions.Editor.SceneManagement
 {
 
 	[InitializeOnLoad]
-	internal class PlayModeStartSceneSelector 
+	internal class PlayModeStartSceneSelector
 	{
 
-		private static string StartScenePath 
+		private static string StartScenePath
 		{
-			get 
+			get
 			{
 				return EditorBuildSettings.scenes.Length > 0
 					? EditorBuildSettings.scenes[0].path
@@ -40,7 +40,7 @@ namespace com.eetuvartia.UnityExtensions.Editor.SceneManagement
 			ShouldPlayFromStartScene = !ShouldPlayFromStartScene;
 			Menu.SetChecked
 			(
-				PlayModeStartSceneSelectionConstants.ToggleShouldPlayFromStartSceneMenuItem, 
+				PlayModeStartSceneSelectionConstants.ToggleShouldPlayFromStartSceneMenuItem,
 				ShouldPlayFromStartScene
 			);
 		}
