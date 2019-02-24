@@ -12,21 +12,30 @@ namespace com.eetuvartia.UnityExtensions.Editor.SceneManagement
 		{
 			get
 			{
-				return EditorBuildSettings.scenes.Length > 0
-					? EditorBuildSettings.scenes[0].path
+				return ShouldPlayFromStartScene
+					? EditorPrefs.GetString(PlayModeStartSceneSelectionConstants.StartUpSceneAssetPathKey, null)
 					: null;
 			}
 		}
 
-		private static bool ShouldPlayFromStartScene 
+		private static bool ShouldPlayFromStartScene
 		{
 			get { return EditorPrefs.GetBool(PlayModeStartSceneSelectionConstants.ShouldPlayFromStartSceneKey, false); }
-			set { EditorPrefs.SetBool(PlayModeStartSceneSelectionConstants.ShouldPlayFromStartSceneKey, value); }
+			set
+			{
+				EditorSceneManager.playModeStartScene = value ? StartUpSceneAsset : null;
+				EditorPrefs.SetBool(PlayModeStartSceneSelectionConstants.ShouldPlayFromStartSceneKey, value);
+			}
+		}
+
+		private static SceneAsset StartUpSceneAsset
+		{
+			get { return AssetDatabase.LoadAssetAtPath<SceneAsset>(StartScenePath); }
 		}
 
 		static PlayModeStartSceneSelector()
 		{
-			EditorSceneManager.playModeStartScene = AssetDatabase.LoadAssetAtPath<SceneAsset>(StartScenePath);
+			EditorSceneManager.playModeStartScene = StartUpSceneAsset;
 			Menu.SetChecked
 			(
 				PlayModeStartSceneSelectionConstants.ToggleShouldPlayFromStartSceneMenuItem,
